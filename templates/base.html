@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{#    calls the title of the page or uses carpool as default#}
+
+    {#calls the title of the page or if none, uses carpool as default#}
     <title>{% block title %}Carpool{% endblock %}</title>
 </head>
 <body>
-    {% block body%}{% endblock %}
+
+    {% block body%}
+        <h1> Hello Gracie</h1>
+    {% endblock %}
 </body>
 </html>
