@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import HomePageView
-
+from . import views
 
 app_name = 'carpool'
 
