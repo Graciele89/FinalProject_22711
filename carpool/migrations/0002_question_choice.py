@@ -28,4 +28,10 @@ class Migration(migrations.Migration):
                 ('question', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='carpool.question')),
             ],
         ),
+        # migrations.AddField(
+        #    model_name='post',
+        #    name='image',
+        #    field=sorl.thumbnail.fields.ImageField(default=1, upload_to='') ,
+        #     preserve_default=False,
+        # ),
     ]

@@ -1,31 +1,14 @@
 from django.db import models
 import datetime
 from django.utils import timezone
-
-
-# class Matches(models.Model):
-#     text = models.CharField(max_length=140, blank=False, null=False)
-#
-#     def __str__(self):
-#         return self.text
-#
-# class Offers(models.Model):
-#         text = models.CharField(max_length=140, blank=False, null=False)
-#
-#         def __str__(self):
-#             return self.text
-#
-# class Requests(models.Model):
-#     text = models.CharField(max_length=140, blank=False, null=False)
-#
-#     def __str__(self):
-#         return self.text
+# from sorl.thumbnail import ImageField
 
 class Post(models.Model):
     text = models.CharField(max_length=140, blank=False, null=False)
+    # image = ImageField()
 
     def __str__(self):
-        return self.text
+       return self.text
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)

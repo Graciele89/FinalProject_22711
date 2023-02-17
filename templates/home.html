@@ -3,13 +3,30 @@
 {% block title %} Homepage {% endblock %}
 
 {% block content %}
-{#    If the user is authenticated say: hi userName #}
+{#    check if user is authenticated, then say: hi userName #}
 {#    and give the option for the user logout or reset password,#}
 {#    else, if user is not authenticated show the login option#}
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
      <p><a href="{% url 'logout' %}">Log Out</a></p>
      <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+
+
+
+     <div>
+        {% for post in posts %}
+            {{ post.text }}
+            <hr>
+        {% endfor %}
+
+{#          link to create a new post form#}
+    <a href="{% url 'carpool:post' %}">Add a new Request &rAarr;</a>
+    <hr>
+     <a href="{% url 'carpool:post' %}">Add a new Offer &rAarr;</a>
+    <hr>
+     <a href="{% url 'feedback:index' %}">Give us a feedback &rAarr;</a>
+    <hr>
+   </div>
 
 {% else %}
   <p>You are not logged in</p>
@@ -20,13 +37,7 @@
    <h1>{{ my_object_welcome }}</h1>
     <h3>{{ my_mission_object }}</h3>
 
-    <div>
-{#    <form>#}
-{#        <label>name</label>#}
-{#    <input/>#}
-{#    <button>Button</button>#}
-{#    </form>#}
-    </div>
+
 
 {% endblock %}
 
