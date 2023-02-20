@@ -11,7 +11,7 @@ from feedback import urls as feedback_urls
 # Django will look top to bottom for url patterns, need to be in the right order:
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include("accounts.urls")),
+    path('accounts/', include("accounts.urls")), #sign up
     path('accounts/', include("django.contrib.auth.urls")),
     path('feedback/', include('feedback.urls')),
     path('', include(carpool_urls, namespace='carpool')),

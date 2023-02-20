@@ -33,6 +33,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Application definition
 
 INSTALLED_APPS = [
+    'feedback.apps.FeedbackConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'carpool',
-    'feedback',
+    # 'feedback',
     #to add images:
     # 'sorl.thumbnail',
 ]

@@ -8,21 +8,25 @@
 {#    else, if user is not authenticated show the login option#}
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
+
      <p><a href="{% url 'logout' %}">Log Out</a></p>
      <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
 
 
 
      <div>
-        {% for post in posts %}
-            {{ post.text }}
-            <hr>
-        {% endfor %}
+{#       display the posts done by the user#}
+{#        {% for post in posts %}#}
+{#            {{ post.text }}#}
+{#            <hr>#}
+{#        {% endfor %}#}
 
 {#          link to create a new post form#}
     <a href="{% url 'carpool:post' %}">Add a new Request &rAarr;</a>
     <hr>
      <a href="{% url 'carpool:post' %}">Add a new Offer &rAarr;</a>
+         <hr>
+    <a href="{% url 'carpool:post' %}">My matches &rAarr;</a>
     <hr>
      <a href="{% url 'feedback:index' %}">Give us a feedback &rAarr;</a>
     <hr>
@@ -31,6 +35,8 @@
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
+    <br>
+  <a href="{% url 'signup' %}">SignUp</a>
 {% endif %}
 
 

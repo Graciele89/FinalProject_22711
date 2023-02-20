@@ -1,7 +1,12 @@
-{% if latest_question_list %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+{% if latest_suggestion_list %}
     <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'pools:detail' suggestion_id %}">{{ suggestion.suggestion_box }}</a></li>
+    {% for suggestion in latest_suggestion_list %}
+        <li><a href="{% url 'polls:detail' suggestion.id %}">{{ suggestion.suggestion_box }}</a></li>
+
     {% endfor %}
     </ul>
 {% else %}

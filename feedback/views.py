@@ -1,9 +1,10 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
+from django.template import loader
 from .models import Choice, Suggestion
+from django.utils import timezone
 
 
 class IndexView(generic.ListView):
@@ -11,32 +12,32 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_suggestion_list'
 
     def get_queryset(self):
-        """Return the last five published suggestions."""
-        return Suggestion.objects.order_by('-pub_date')[:5]
-
+        """
+        Return the last five published questions (not including those set to be
+        published in the future).
+        """
+        return Suggestion.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by('-pub_date')[:5]
 
 class DetailView(generic.DetailView):
     model = Suggestion
-    template_name = 'polls/details.html'
+    template_name = 'polls/detail.html'
+
+    def get_queryset(self):
+        """
+        Excludes any questions that aren't published yet.
+        """
+        return Suggestion.objects.filter(pub_date__lte=timezone.now())
 
 
 class ResultsView(generic.DetailView):
     model = Suggestion
     template_name = 'polls/results.html'
 
-# def index(request):
-#     latest_suggestion_list = Suggestion.objects.order_by('-pub_date')[:5]
-#     context = {'latest_question_list': latest_suggestion_list}
-#     return render(request, 'polls/index.html', context)
-#
-# def detail(request, suggestion_id):
-#     suggestion = get_object_or_404(Suggestion, pk=suggestion_id)
-#     return render(request, 'polls/detail.html', {'suggestion': suggestion})
-#
-# def results(request, suggestion_id):
-#     suggestion = get_object_or_404(Suggestion, pk=suggestion_id)
-#     return render(request, 'polls/results.html', {'suggestion': suggestion})
-
+    # def results(request, suggestion_id):
+    #     suggestion = get_object_or_404(Suggestion, pk=suggestion_id)
+    #     return render(request, 'polls/results.html', {'suggestion': suggestion})
 
 def vote(request, suggestion_id):
     suggestion = get_object_or_404(Suggestion, pk=suggestion_id)
@@ -44,7 +45,7 @@ def vote(request, suggestion_id):
         selected_choice = suggestion.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the suggestion voting form.
-        return render(request, 'polls/details.html', {
+        return render(request, 'polls/detail.html', {
             'suggestion': suggestion,
             'error_message': "You didn't select a choice.",
         })

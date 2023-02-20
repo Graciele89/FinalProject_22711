@@ -4,11 +4,11 @@ from django.utils import timezone
 # from sorl.thumbnail import ImageField
 
 class Post(models.Model):
-    text = models.CharField(max_length=140, blank=False, null=False)
+    text = models.CharField(max_length=200, blank=False, null=False)
     # image = ImageField()
 
     def __str__(self):
-       return self.text
+        return self.text
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)

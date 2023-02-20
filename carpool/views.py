@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, DetailView, FormView
 from .models import Post
-from .forms import PostForm
+from . forms import PostForm
 
 class HomePageView(TemplateView):
     template_name = "home.html"
@@ -10,7 +10,7 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['my_object_welcome'] = "Welcome to Cairdepool!"
         context['my_mission_object'] = "More then a friend's carpool, friends of the planet"
-        context['posts'] = Post.objects.all().order_by('-id')   #order the posts so last appears first
+        context['posts'] = Post.objects.all().order_by('-id')   #ordering the posts so that last appears first
         return context
 
 #this class is for user upload a new request

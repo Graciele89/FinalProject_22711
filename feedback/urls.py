@@ -11,13 +11,3 @@ urlpatterns = [
     path('<int:suggestion_id>/vote/', views.vote, name='vote'),
 ]
 
-# urlpatterns = [
-#     # ex: /polls/
-#     path('', views.index, name='index'),
-#     # ex: /polls/5/
-#     path('<int:suggestion_id>/', views.detail, name='detail'),
-#     # ex: /polls/5/results/
-#     path('<int:suggestion_id>/results/', views.results, name='results'),
-#     # ex: /polls/5/vote/
-#     path('<int:suggestion_id>/vote/', views.vote, name='vote'),
-# ]
