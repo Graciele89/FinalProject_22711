@@ -35,9 +35,11 @@ class ResultsView(generic.DetailView):
     model = Suggestion
     template_name = 'polls/results.html'
 
-    # def results(request, suggestion_id):
-    #     suggestion = get_object_or_404(Suggestion, pk=suggestion_id)
-    #     return render(request, 'polls/results.html', {'suggestion': suggestion})
+def results(request, suggestion_id):
+        suggestion = get_object_or_404(Suggestion, pk=suggestion_id)
+
+        return render(request, 'polls/results.html', {'suggestion': suggestion})
+
 
 def vote(request, suggestion_id):
     suggestion = get_object_or_404(Suggestion, pk=suggestion_id)
@@ -53,6 +55,6 @@ def vote(request, suggestion_id):
         selected_choice.votes += 1
         selected_choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
+        # with POST data, preventing data from being posted twice if the
         # user hits the Back button.
         return HttpResponseRedirect(reverse('feedback:results', args=(suggestion.id,)))

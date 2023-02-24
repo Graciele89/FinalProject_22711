@@ -1,7 +1,8 @@
 li a {
-    color: green;
+    color: darkblue;
 }
 
 body {
-    background: white url("../../../static/img/irish_landscape .jpg") no-repeat;
+    background: lightcoral;
+    /*background: darkcyan url("../../../static/img/irish_landscape.jpg") no-repeat;*/
 }

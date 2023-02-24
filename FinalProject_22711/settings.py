@@ -28,12 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'feedback.apps.FeedbackConfig',
+    #'feedback.apps.FeedbackConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'carpool',
-    # 'feedback',
+    'feedback',
+
     #to add images:
     # 'sorl.thumbnail',
 ]

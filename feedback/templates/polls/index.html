@@ -1,15 +1,32 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
 
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+        {% if latest_suggestion_list %}
+            <ul>
+            {% for suggestion in latest_suggestion_list %}
+                <li><a href="{% url 'feedback:detail' suggestion.id %}">{{ suggestion.suggestion_box }}</a></li>
 
-{% if latest_suggestion_list %}
-    <ul>
-    {% for suggestion in latest_suggestion_list %}
-        <li><a href="{% url 'polls:detail' suggestion.id %}">{{ suggestion.suggestion_box }}</a></li>
+            {% endfor %}
+            </ul>
 
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+
+</body>
+</html>
+
+
+
+
+
 

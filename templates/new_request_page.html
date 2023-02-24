@@ -4,7 +4,7 @@
 
 
 {% block content %}
-    <form method="POST" action=" " enctype="multipart/form-data">
+    <form method="POST" action=" " enctype="multipart/form-data"> {# allows to send the files to the server#}
 
     {% csrf_token %}
     {{ form.as_p }}
