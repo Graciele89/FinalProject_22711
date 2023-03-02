@@ -20,7 +20,7 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['my_object_welcome'] = "Welcome to Cairdepool! "
         context['my_mission_object'] = "More then a friend's carpool"
-        # context['posts'] = Post.objects.all().order_by('-id')   #ordering the posts so that last appears first
+
         return context
 
 
@@ -34,6 +34,7 @@ class AddPostViewRequest(FormView):
         self.request = request
         return super().dispatch(request, *args, **kwargs)
 
+    # context['posts'] = Post.objects.all().order_by('-id')   #ordering the posts so that last appears first
     def form_valid(self, form):
         new_object = Post.objects.create(
             user_id=self.kwargs['pk'],
@@ -77,6 +78,17 @@ class SeeRequests(ListView):
         return post_list
 
 
+class SeeOffers(ListView):
+    model = PostOffer
+    template_name = 'my_offers.html'
+    context_object_name = 'post_offer_list'
+
+    def get_queryset(self):  # returns list of published requests
+        post_offer_list = PostOffer.objects.filter(user_id=self.kwargs["pk"])
+
+        return post_offer_list
+
+
 class DeleteRequestPost(DeleteView):
     model = Post
     template_name = 'my_requests.html'
@@ -87,4 +99,14 @@ class DeleteRequestPost(DeleteView):
 
         return redirect('carpool:requests', kwargs["pk"])
 
+
+class DeleteOffersPost(DeleteView):
+    model = PostOffer
+    template_name = 'my_offers.html'
+
+    def get(self, request, *args, **kwargs):
+        model_list = PostOffer.objects.filter(user_id=kwargs["pk"])
+        model_list.delete()
+
+        return redirect('carpool:offers', kwargs["pk"])
 

@@ -6,8 +6,12 @@
 {% block content %}
     <form method="POST" action="{% url 'carpool:post' user.id %}" enctype="multipart/form-data"> {# allows to send the files to the server#}
 
+{# Django uses the %csrf token% tag to protect itself from malicious attacks. #}
+{#        After rendering the page, it creates a token on the server and makes careful#}
+{#        cross-check this token for any incoming requests.If the requests coming in don't contain the token,#}
+{#        they are not executed. #}
     {% csrf_token %}
-    {{ form.as_p }}
+        {{ form.as_p }}   {# {{ form.as_p }} – Render Django Forms as paragraph. {{ form.as_ul }} – Render Django Forms as list. #}
     <div>
         <button type="submit"> Submit my Request </button>
     </div>

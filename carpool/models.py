@@ -14,7 +14,6 @@ class Post(models.Model):
 
 
 
-
 class PostOffer(models.Model):
     text_destination = models.CharField(max_length=140, blank=False, null=False)
     text_origin = models.CharField(max_length=140, blank=False, null=False)

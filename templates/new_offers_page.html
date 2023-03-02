@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %} Offers {% endblock %}
+{% block title %}New Offer {% endblock %}
 
 
 {% block content %}
 {# (enctype)allow to send files from our browser to the server#}
-    <form method="POST" action=" " enctype="multipart/form-data">
+    <form method="POST" action="{%  url 'carpool:offer' user.id %} " enctype="multipart/form-data">
 
     {% csrf_token %}   {# cross site request, using our site and not other #}
-    {{ form.as_p }}    {# insides of the form #}
+    {{ form.as_p }}    {# insides of the form, render as paragraph #}
     <div>
         <button type="submit"> Submit my Offer </button>
     </div>

@@ -25,15 +25,15 @@
 {#          link to create a new post form#}
     <a href="{% url 'carpool:post' user.id %}">Add a new Request &rAarr;</a>
     <hr>
-     <a href="{% url 'carpool:offer' %}">Add a new Offer &rAarr;</a>
+     <a href="{% url 'carpool:offer' user.id %}">Add a new Offer &rAarr;</a>
          <hr>
-    <a href="{% url 'carpool:index' %}">My matches &rAarr;;</a> //not working yet
-    <hr>
-         <a href="{% url 'carpool:requests' user.id %}">My requests</a>
+         <a href="{% url 'carpool:requests' user.id %}">My Requests</a>
          <hr>
-
-{#     <a href="{% url 'feedback:index' %}">Give us a feedback &rAarr;</a>#}
+          <a href="{% url 'carpool:offers' user.id %}">My Offers</a>
+         <hr>
+{#        <a href="{% url 'carpool:index' %}">My matches &rAarr;;</a> //not working yet#}
 {#    <hr>#}
+
    </div>
 
 
@@ -55,7 +55,6 @@
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -78,7 +77,7 @@
         <h5>About us</h5>
           <p><b>Cairdepool</b> is a carpool application created to help solve problems as traffic jams,<br>
               fewer cars on the road also means less pollution in the air
-              as well as <b>sharing </b> journeys costs,<br> and why not a new way of making new friends</p>
+              as well as <b>sharing </b> journeys costs,<br> and why not a new way of making friends</p>
       </div>
     </div>
   </div>

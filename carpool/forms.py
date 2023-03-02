@@ -29,7 +29,6 @@ ireland_places = [('DUBLIN 1', "D1"), ('DUBLIN 2', "D2"), ('DUBLIN 3', "D3"), ('
 
 class PostFormRequest(forms.Form):
 
-    # user = forms.()
     text_destination = forms.ChoiceField(choices=ireland_places)
     text_origin = forms.ChoiceField(choices=ireland_places)
     text_date = forms.CharField(widget=forms.TextInput(attrs={'type': 'date'}))
@@ -39,7 +38,6 @@ class PostFormRequest(forms.Form):
 
 class PostFormOffer(forms.Form):
 
-    # user = forms.CharField()
     text_destination = forms.ChoiceField(choices=ireland_places)
     text_origin = forms.ChoiceField(choices=ireland_places)
     text_date = forms.CharField(widget=forms.TextInput(attrs={'type': 'date'}))
