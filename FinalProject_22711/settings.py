@@ -34,7 +34,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 # Application definition
 
 INSTALLED_APPS = [
-    #'feedback.apps.FeedbackConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,9 +43,8 @@ INSTALLED_APPS = [
     'accounts',
     'carpool',
     'feedback',
-
-    #to add images:
-    # 'sorl.thumbnail',
+    # 'feedback.apps.FeedbackConfig',
+    # 'sorl.thumbnail',       #for user upload images, future implements
 ]
 
 MIDDLEWARE = [

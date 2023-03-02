@@ -4,10 +4,11 @@
 
 
 {% block content %}
+{# (enctype)allow to send files from our browser to the server#}
     <form method="POST" action=" " enctype="multipart/form-data">
 
-    {% csrf_token %}
-    {{ form.as_p }}
+    {% csrf_token %}   {# cross site request, using our site and not other #}
+    {{ form.as_p }}    {# insides of the form #}
     <div>
         <button type="submit"> Submit my Offer </button>
     </div>
@@ -15,8 +16,3 @@
 
 {% endblock %}
 
-{#       display the posts done by the user#}
-{#        {% for post in posts %}#}
-{#            {{ post.text }}#}
-{#            <hr>#}
-{#        {% endfor %}#}

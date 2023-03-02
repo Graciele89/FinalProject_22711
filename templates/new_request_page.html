@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %} Request {% endblock %}
+{% block title %}New Request {% endblock %}
 
 
 {% block content %}
-    <form method="POST" action=" " enctype="multipart/form-data"> {# allows to send the files to the server#}
+    <form method="POST" action="{% url 'carpool:post' user.id %}" enctype="multipart/form-data"> {# allows to send the files to the server#}
 
     {% csrf_token %}
     {{ form.as_p }}
@@ -14,3 +14,4 @@
     </form>
 
 {% endblock %}
+

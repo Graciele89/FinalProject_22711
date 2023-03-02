@@ -1,0 +1,35 @@
+{#this is  the view of the requests created by the user#}
+{#if the user has post display it, otherwise tell the user that he doesn't have any requests!#}
+{% extends "base.html" %}
+
+{% block title %} My Requests {% endblock %}
+
+{% block content %}
+
+    <h1> MY REQUESTS:</h1>
+    <br>
+
+    {% if post_list %}
+    {% for postRequests in post_list %}
+
+        <h3>{{ postRequests.text_origin }}</h3>
+        <h3>{{ postRequests.text_destination }}</h3>
+        <h3>{{ postRequests.text_date }}</h3>
+        <H3>{{ postRequests.text_time }}</H3>
+
+    {% endfor %}
+    {% else %}
+
+    Hi {{ user.username }}!
+
+    <h3>You don't have any requests!</h3>
+    {% endif %}
+
+    <br>
+
+    <div>
+     <a href="{% url 'carpool:delete' user.id %}" role="button"  class="btn btn-primary" > DELETE </a>
+    </div>
+    </form>
+
+{% endblock %}

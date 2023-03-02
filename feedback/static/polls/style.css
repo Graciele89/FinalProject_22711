@@ -1,8 +1,8 @@
 li a {
-    color: darkblue;
+    color: black; align-content: center; text-decoration-color: snow;
 }
 
 body {
-    background: lightcoral;
-    /*background: darkcyan url("../../../static/img/irish_landscape.jpg") no-repeat;*/
+    /*background: blue;*/
+    background: blue url("../../../static/img/irish_landscape.jpg") no-repeat;
 }
