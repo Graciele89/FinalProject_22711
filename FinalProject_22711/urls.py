@@ -7,7 +7,7 @@ from carpool import urls as carpool_urls
 from django.conf.urls.static import static
 from feedback import urls as feedback_urls
 
-# Django will look top to bottom for url patterns, need to be in the right order:
+# Django will look top to bottom for url patterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include("accounts.urls")),

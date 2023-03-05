@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomePageView, AddPostViewRequest, AddPostViewOffer, SeeRequests, DeleteRequestPost, SeeOffers, DeleteOffersPost
+from .views import HomePageView, AddPostViewRequest, AddPostViewOffer, SeeRequests, DeleteRequestPost, SeeOffers, DeleteOffersPost#, MyMatches
 from . import views
 
 app_name = 'carpool'
@@ -11,5 +11,6 @@ urlpatterns = [
     path('requests/<int:pk>', SeeRequests.as_view(), name='requests'),   # url to see the created requests
     path('delete/<int:pk>', DeleteRequestPost.as_view(), name='delete'),  # path to delete requests done by user
     path('offers/<int:pk>', SeeOffers.as_view(), name='offers'),          # url to see the created offers  #}
-    path('deleteOffers/<int:pk>', DeleteOffersPost.as_view(), name='deleteOffers')  # path to delete requests done by user
+    path('deleteOffers/<int:pk>', DeleteOffersPost.as_view(), name='deleteOffers'), # path to delete requests done by user
+    # path('matches/<int:pk>', MyMatches.as_view(), name='matches')
 ]

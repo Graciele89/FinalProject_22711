@@ -4,15 +4,24 @@
 
 
 {% block content %}
+    <h2> Create Offer:</h2>
+
+<div class="container-fluid">
+    <div class="=row">
+    <br>
+     <div class="=col-sm-10 offset-sm-1 px5 ">
 {# (enctype)allow to send files from our browser to the server#}
     <form method="POST" action="{%  url 'carpool:offer' user.id %} " enctype="multipart/form-data">
 
     {% csrf_token %}   {# cross site request, using our site and not other #}
     {{ form.as_p }}    {# insides of the form, render as paragraph #}
+
     <div>
-        <button type="submit"> Submit my Offer </button>
+        <button type="submit" class="btn btn-primary">Submit Offer</button>
     </div>
     </form>
-
+     </div>
+    </div>
+</div>
 {% endblock %}
 

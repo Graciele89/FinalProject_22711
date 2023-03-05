@@ -18,7 +18,7 @@ class HomePageView(TemplateView):
     # https://ccbv.co.uk/projects/Django/4.1/django.views.generic.base/TemplateView/
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['my_object_welcome'] = "Welcome to Cairdepool! "
+        context['my_object_welcome'] = "Welcome to Cairdepool!"
         context['my_mission_object'] = "More then a friend's carpool"
 
         return context
@@ -30,7 +30,8 @@ class AddPostViewRequest(FormView):
     form_class = PostFormRequest
     success_url = "/"    # on success send back to homepage
 
-    def dispatch(self, request, *args, **kwargs):  #displays success messages:
+    # displays success messages:
+    def dispatch(self, request, *args, **kwargs):
         self.request = request
         return super().dispatch(request, *args, **kwargs)
 
@@ -44,17 +45,20 @@ class AddPostViewRequest(FormView):
             text_time=form.cleaned_data['text_time']
             # image=form.cleaned_data['image 1']   //future implementation
         )
-# https://docs.djangoproject.com/en/4.1/ref/contrib/messages/
-# it's possible DISPLAY different messages for the user= DEBUG, INFO, SUCCESS, WARNING OR ERROR
-        messages.add_message(self.request, messages.SUCCESS, "Yor request was successful!")
+
+        messages.add_message(self.request, messages.SUCCESS, "Yor Request was successful!")
         return super().form_valid(form)
 
 
 class AddPostViewOffer(FormView):
     template_name = "new_offers_page.html"
     form_class = PostFormOffer
-    success_url = "/"    # on success  post offer send back to homepage
+    success_url = "/"
 
+
+    def dispatch(self, request, *args, **kwargs):  #displays success messages:
+        self.request = request
+        return super().dispatch(request, *args, **kwargs)
     def form_valid(self, form):
         new_offer = PostOffer.objects.create(
             user_id=self.kwargs['pk'],
@@ -64,6 +68,8 @@ class AddPostViewOffer(FormView):
             text_time=form.cleaned_data['text_time']
             # image=form.cleaned_data['image 1']   //future implementation
         )
+
+        messages.add_message(self.request, messages.SUCCESS, "Yor Offer was successful!")
         return super().form_valid(form)
 
 
@@ -110,3 +116,38 @@ class DeleteOffersPost(DeleteView):
 
         return redirect('carpool:offers', kwargs["pk"])
 
+
+# class MyMatches(ListView):
+#     model = Post
+#     template_name = 'my_matches_page.html'
+#     context_object_name = 'matching_origin'
+#
+#     matching_origin=[]
+#     for each in Post.objects.all():
+#         models=PostOffer.objects.filter(text_origin=each.text_origin)
+#         if len(models)>0:
+#             matching_origin.append(models.first().text_destination)
+
+
+# class MyMatches(ListView):
+#     model = Post
+#     template_name = 'my_matches_page.html'
+#
+#
+#     def get_queryset(self):
+#         text_origin=Post.objects.all().values('text_origin')
+#         text_destination=Post.objects.filter(text_origin__in=text_origin).values('text_destination')
+#
+#         return
+
+
+# class MyMatches(ListView):
+#     model = Post
+#     template_name = 'my_matches_page.html'
+#     context_object_name = 'matches_list'
+#
+#     def get_queryset(self, request): # Tell Django to look for objects on the 'other' database.
+#     pr=post_list
+#     matches_list = Post.objects.filter(text_origin__in=pr.text_origin.all())
+#
+#     return matches_list

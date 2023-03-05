@@ -11,3 +11,4 @@ admin.site.register(Post, PostAdmin)  # connects the models
 
 admin.site.register(PostOffer, PostAdmin)
 
+# admin.site.register(Matches, PostAdmin)

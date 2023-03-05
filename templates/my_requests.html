@@ -1,36 +1,44 @@
-{#this is  the view of the requests created by the user#}
+{#this is  the html page to visualize the requests created by the user#}
 {#if the user has post display it, otherwise tell the user that he doesn't have any requests!#}
 {% extends "base.html" %}
 
 {% block title %} My Requests {% endblock %}
 
 {% block content %}
-
-    <h1> MY REQUESTS:</h1>
+     <h1> MY REQUESTS:</h1>
     <br>
 
-    {% if post_list %}
-    {% for postRequests in post_list %}
+    <div class="card" style="width: 20rem;">
+      <div class="card-body">
+         {% if post_list %}
+           {% for postOffers in post_list %}
+                 <h4>To: {{ postOffers.text_destination }}</h4>
+                 <h4>From: {{ postOffers.text_origin }}</h4>
+                 <h4>{{ postOffers.text_date }}</h4>
+                 <H4>{{ postOffers.text_time }}</H4>
+                  <br>
+           {% endfor %}
 
-        <h3>{{ postRequests.text_origin }}</h3>
-        <h3>{{ postRequests.text_destination }}</h3>
-        <h3>{{ postRequests.text_date }}</h3>
-        <H3>{{ postRequests.text_time }}</H3>
-        <br>
+             <p class="card-text">Delete requests?</p>
 
-    {% endfor %}
-    {% else %}
+          {# delete button: to delete all offers done by the user:  #}
+        <div>
+        <a href="{% url 'carpool:delete' user.id %}" role="button"  class="btn btn-primary" > DELETE </a>
+        </div>
 
-    Hi {{ user.username }}!
+            {% else %}
 
-    <h3>You don't have any requests!</h3>
-    {% endif %}
+              <h5><b>Hello {{ user.username }} </b></h5>
 
-    <br>
-{#    delete button: to delete all requests done by the user:#}
-    <div>
-     <a href="{% url 'carpool:delete' user.id %}" role="button"  class="btn btn-primary" > DELETE </a>
+             <h4>You don't have any requests!</h4>
+             <br>
+              <div>
+              <a href="{% url 'carpool:post' user.id %}" role="button"  class="btn btn-primary" > Create Request  </a>
+              </div>
+         {% endif %}
+
+     </div>
     </div>
-    </form>
 
 {% endblock %}
+

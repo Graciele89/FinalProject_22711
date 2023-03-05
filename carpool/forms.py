@@ -29,19 +29,18 @@ ireland_places = [('DUBLIN 1', "D1"), ('DUBLIN 2', "D2"), ('DUBLIN 3', "D3"), ('
 
 class PostFormRequest(forms.Form):
 
-    text_destination = forms.ChoiceField(choices=ireland_places)
-    text_origin = forms.ChoiceField(choices=ireland_places)
-    text_date = forms.CharField(widget=forms.TextInput(attrs={'type': 'date'}))
-    text_time = forms.CharField(widget=forms.TextInput(attrs={'type': 'time'}))
+    text_destination = forms.ChoiceField(label="Enter destination:", choices=ireland_places)
+    text_origin = forms.ChoiceField(label="Enter your origin:", choices=ireland_places)
+    text_date = forms.CharField(label="Desired Day:", widget=forms.TextInput(attrs={'type': 'date'}))
+    text_time = forms.CharField(label="Desired Time", widget=forms.TextInput(attrs={'type': 'time'}))
     # image = forms.FileField()    //future implementation user photo
 
 
 class PostFormOffer(forms.Form):
 
-    text_destination = forms.ChoiceField(choices=ireland_places)
-    text_origin = forms.ChoiceField(choices=ireland_places)
-    text_date = forms.CharField(widget=forms.TextInput(attrs={'type': 'date'}))
-    text_time = forms.CharField(widget=forms.TextInput(attrs={'type': 'time'}))
-
+    text_destination = forms.ChoiceField(label="Enter your destination:", choices=ireland_places)
+    text_origin = forms.ChoiceField(label="Enter your origin:", choices=ireland_places)
+    text_date = forms.CharField(label="Desired day:", widget=forms.TextInput(attrs={'type': 'date'}))
+    text_time = forms.CharField(label="Desired time:", widget=forms.TextInput(attrs={'type': 'time'}))
   # image = forms.FileField()    //future implementation user photo
 
